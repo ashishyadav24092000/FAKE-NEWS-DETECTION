@@ -1,0 +1,61 @@
+SUMMARY OF THE PROJECT::
+
+We have detected fake news with Python in this project. We took a political dataset, implemented a TfidfVectorizer, initialized a PassiveAggressiveClassifier, and fit our model. We ended up obtaining an accuracy of 92.74% in magnitude.
+
+
+
+Some important points regarding the project::
+
+
+
+1. class sklearn.feature_extraction.text.TfidfVectorizer(*, input='content', encoding='utf-8', decode_error='strict', strip_accents=None, lowercase=True, preprocessor=None, tokenizer=None, analyzer='word', stop_words=None, token_pattern='(?u)\b\w\w+\b', ngram_range=(1, 1), max_df=1.0, min_df=1, max_features=None, vocabulary=None, binary=False, dtype=<class 'numpy.float64'>, norm='l2', use_idf=True, smooth_idf=True, sublinear_tf=False)
+
+
+
+
+2. max_df can be set to a value in the range [0.7, 1.0) to automatically detect and filter stop words based on intra corpus document frequency of terms.
+
+
+
+
+3. Stop words are words like “and”, “the”, “him”, which are presumed to be uninformative in representing the content of a text, and which may be removed to avoid them being construed as signal for prediction. Sometimes, however, similar words are useful for prediction, such as in classifying writing style or personality. There are several known issues in our provided ‘english’ stop word list.
+
+
+
+4. max_df : float or int, default=1.0 ----- > When building the vocabulary ignore terms that have a document frequency strictly higher than the given threshold (corpus-specific stop words). If float in range [0.0, 1.0], the parameter represents a proportion of documents, integer absolute counts. This parameter is ignored if vocabulary is not None.
+
+
+5. fit_transform(raw_documents, y=None ----> Learn vocabulary and idf, return document-term matrix.
+This is equivalent to fit followed by transform, but more efficiently implemented.
+Parameters :  raw_documents : iterable ----> An iterable which generates either str, unicode or file objects.
+y : None -----> This parameter is ignored.
+Returns : X : sparse matrix of (n_samples, n_features)
+Tf-idf-weighted document-term matrix.
+
+
+
+6. TF (Term Frequency): The number of times a word appears in a document is its Term Frequency. A higher value means a term appears more often than others, and so, the document is a good match when the term is part of the search terms.
+
+
+
+
+7. DF (Inverse Document Frequency): Words that occur many times a document, but also occur many times in many others, may be irrelevant. IDF is a measure of how significant a term is in the entire corpus.
+--> The TfidfVectorizer converts a collection of raw documents into a matrix of TF-IDF features
+
+
+
+
+8. fit_transform(raw_documents, y=None) ------> Learn vocabulary and idf, return document-term matrix.
+This is equivalent to fit followed by transform, but more efficiently implemented.
+returns : X : sparse matrix of (n_samples, n_features) = Tf-idf-weighted document-term matrix.
+
+
+
+9. transform(raw_documents) -----> Transform documents to document-term matrix.
+Uses the vocabulary and document frequencies (df) learned by fit (or fit_transform).
+returns : X : sparse matrix of (n_samples, n_features) = Tf-idf-weighted document-term matrix.
+
+
+
+
+TfidfVectorizer turns a collection of raw documents into a matrix of TF-IDF features.¶
